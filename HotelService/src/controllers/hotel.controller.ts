@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from "express";
 import { createHotelDTO } from "../dto/hotel.dto";
 import {
   createHotelService,
+  deleteHotelService,
   getAllHotelsService,
   getHotelByIdService,
 } from "../services/hotel.service";
@@ -44,6 +45,20 @@ export async function getAllHotelsHandler(
   res.status(200).json({
     message: "Hotels retrieved successfully",
     data: hotelsResponse,
+    success: true,
+  });
+}
+
+export async function deleteHotelHandler(
+  req: Request,
+  res: Response,
+  next: NextFunction
+) {
+  const hotelId = Number(req.params.id);
+  await deleteHotelService(hotelId);
+
+  res.status(200).json({
+    message: "Hotel deleted successfully",
     success: true,
   });
 }
