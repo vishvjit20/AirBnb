@@ -5,6 +5,7 @@ import v2Router from "./routers/v2/index.router";
 import { genericErrorHandler } from "./middlewares/error.middleware";
 import logger from "./config/logger";
 import { attachCorrelationIdMiddleware } from "./middlewares/correlation.middleware";
+import { addEmailToQueue } from "./producers/email.producer";
 
 const app = express();
 
@@ -27,4 +28,11 @@ app.listen(serverConfig.PORT, () => {
     `Server is running on port http://localhost:${serverConfig.PORT}`
   );
   logger.info("Press Ctrl+C to stop the server", { name: "Dev Server" });
+
+  addEmailToQueue({
+    to: "sample",
+    subject: "Sample Email Booking",
+    templateId: "sample-template",
+    params: { name: "John Doe", orderId: "12345" },
+  });
 });
