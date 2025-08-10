@@ -53,15 +53,15 @@ Room.init(
       allowNull: false,
     },
     createdAt: {
-      type: "TIMESTAMP",
+      type: "DATE",
       defaultValue: new Date(),
     },
     updatedAt: {
-      type: "TIMESTAMP",
+      type: "DATE",
       defaultValue: new Date(),
     },
     deletedAt: {
-      type: "TIMESTAMP",
+      type: "DATE",
       defaultValue: null,
     },
     bookingId: {
