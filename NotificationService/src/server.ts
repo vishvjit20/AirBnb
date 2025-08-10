@@ -9,7 +9,7 @@ import {
 import logger from "./config/logger.config";
 import { attachCorrelationIdMiddleware } from "./middlewares/correlation.middleware";
 import { setupMailerWorker } from "./processors/email.processor";
-import { addEmailToQueue } from "./producers/email.producer";
+// import { addEmailToQueue } from "./producers/email.producer";
 const app = express();
 
 app.use(express.json());
@@ -35,13 +35,13 @@ app.listen(serverConfig.PORT, async () => {
   setupMailerWorker();
   logger.info(`Mailer worker setup completed.`);
 
-  addEmailToQueue({
-    to: "xyz@gmail.com",
-    subject: "Welcome to Our Service",
-    templateId: "welcome",
-    params: {
-      name: "Vishwajeet Singh",
-      appName: "Booking App",
-    },
-  });
+  // addEmailToQueue({
+  //   to: "xyz@gmail.com",
+  //   subject: "Welcome to Our Service",
+  //   templateId: "welcome",
+  //   params: {
+  //     name: "Vishwajeet Singh",
+  //     appName: "Booking App",
+  //   },
+  // });
 });
