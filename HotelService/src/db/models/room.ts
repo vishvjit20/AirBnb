@@ -5,6 +5,8 @@ import {
   Model,
 } from "sequelize";
 import sequelize from "./sequelize";
+import { RoomCategory } from "./roomCategory";
+import { Hotel } from "./hotels";
 
 export class Room extends Model<
   InferAttributes<Room>,
@@ -32,7 +34,7 @@ Room.init(
       type: "INTEGER",
       allowNull: false,
       references: {
-        model: "Hotel",
+        model: Hotel,
         key: "id",
       },
     },
@@ -40,7 +42,7 @@ Room.init(
       type: "INTEGER",
       allowNull: false,
       references: {
-        model: "RoomCategory",
+        model: RoomCategory,
         key: "id",
       },
     },

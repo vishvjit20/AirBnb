@@ -5,6 +5,7 @@ import {
   Model,
 } from "sequelize";
 import sequelize from "./sequelize";
+import { Hotel } from "./hotels";
 
 enum RoomType {
   SINGLE = "SINGLE",
@@ -39,7 +40,7 @@ RoomCategory.init(
       type: "INTEGER",
       allowNull: false,
       references: {
-        model: "hotels",
+        model: Hotel,
         key: "id",
       },
     },
